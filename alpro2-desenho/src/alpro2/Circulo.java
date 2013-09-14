@@ -2,7 +2,7 @@ package alpro2;
 
 import java.io.Serializable;
 
-/**
+/**A classe...
  * 
  * @author marco.mangan@pucrs.br
  *
