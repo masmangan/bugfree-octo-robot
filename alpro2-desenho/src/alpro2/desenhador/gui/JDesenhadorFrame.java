@@ -27,8 +27,7 @@ public class JDesenhadorFrame extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private final Action action = new SwingAction();
-	private final Action action_1 = new SwingAction_1();
+	private final Action sairAction = new SwingAction();
 
 	/**
 	 * Launch the application.
@@ -61,12 +60,12 @@ public class JDesenhadorFrame extends JFrame {
 		mnNewMenu.setMnemonic('A');
 		menuBar.add(mnNewMenu);
 		
-		//JMenuItem menuItem_1 = mnNewMenu.add(action);
+		JMenuItem menuItem_1 = mnNewMenu.add(sairAction);
+		mnNewMenu.add(menuItem_1);
 		
 		JMenu mnNewMenu_1 = new JMenu("Ajuda");
 		menuBar.add(mnNewMenu_1);
 		
-		//JMenuItem menuItem_2 = mnNewMenu_1.add(action_1);
 		
 		JMenuItem menuItem = new JMenuItem("");
 		menuBar.add(menuItem);
@@ -87,6 +86,7 @@ public class JDesenhadorFrame extends JFrame {
 		}
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Sair");
+			System.exit(0);
 		}
 	}
 	private class SwingAction_1 extends AbstractAction {
@@ -102,4 +102,5 @@ public class JDesenhadorFrame extends JFrame {
 			JOptionPane.showMessageDialog(null, "(c) 2013, ALPRO II/FACIN");
 		}
 	}
+
 }
