@@ -2,6 +2,7 @@ package alpro2.desenhador.gui;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
@@ -10,7 +11,6 @@ import javax.swing.Action;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -27,8 +27,8 @@ public class JDesenhadorFrame extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private final Action sairAction = new SwingAction();
-	private final Action sobreAction = new SwingAction_2(this);
+	private final Action sairAction = new SairSwingAction();
+	private final Action sobreAction = new SobreSwingAction(this);
 
 	/**
 	 * Launch the application.
@@ -54,35 +54,39 @@ public class JDesenhadorFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 
+		setIconImage(Toolkit.getDefaultToolkit().getImage(
+				JDesenhadorFrame.class
+				.getResource("/alpro2/desenhador/gui/left.gif")));
+		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 
-		JMenu mnNewMenu = new JMenu("Arquivo");
-		mnNewMenu.setMnemonic('A');
-		menuBar.add(mnNewMenu);
+		JMenu mnFile = new JMenu("Arquivo");
+		mnFile.setMnemonic('A');
+		menuBar.add(mnFile);
 
-		JMenuItem menuItem_1 = mnNewMenu.add(sairAction);
+		mnFile.add(sairAction);
 
-		JMenu mnNewMenu_1 = new JMenu("Ajuda");
-		mnNewMenu_1.setMnemonic('j');
+		JMenu mnHelp = new JMenu("Ajuda");
+		mnHelp.setMnemonic('j');
 
-		menuBar.add(mnNewMenu_1);
+		menuBar.add(mnHelp);
 
-		JMenuItem menuItem_2 = mnNewMenu_1.add(sobreAction);
-		
+		mnHelp.add(sobreAction);
+
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 	}
 
-	private class SwingAction extends AbstractAction {
+	private class SairSwingAction extends AbstractAction {
 		/**
 		 * 
 		 */
 		private static final long serialVersionUID = 1L;
 
-		public SwingAction() {
+		public SairSwingAction() {
 			putValue(NAME, "Sair");
 			putValue(SHORT_DESCRIPTION, "Encerra a aplicação");
 			putValue(MNEMONIC_KEY, KeyEvent.VK_S);
@@ -94,14 +98,14 @@ public class JDesenhadorFrame extends JFrame {
 		}
 	}
 
-		private class SwingAction_2 extends AbstractAction {
+	private class SobreSwingAction extends AbstractAction {
 		/**
 		 * 
 		 */
 		private static final long serialVersionUID = 1L;
 		private JFrame frame;
 
-		public SwingAction_2(JFrame frame) {
+		public SobreSwingAction(JFrame frame) {
 			this.frame = frame;
 			putValue(NAME, "Sobre...");
 			putValue(SHORT_DESCRIPTION, "Sobre o desenhador");
