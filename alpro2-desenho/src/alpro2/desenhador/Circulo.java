@@ -16,10 +16,17 @@ public class Circulo implements Figura, Serializable {
 	
 	private int raio;
 
+	/**
+	 * 
+	 */
 	public Circulo() {
 		this(1);
 	}
 
+	/**
+	 * 
+	 * @param raio
+	 */
 	public Circulo(int raio) {
 		if (raio <= 0) {
 			throw new IllegalArgumentException("Valor de raio deve ser maior do que zero.");
@@ -27,6 +34,10 @@ public class Circulo implements Figura, Serializable {
 		this.raio = raio;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public int getLado() {
 		return raio;
 	}

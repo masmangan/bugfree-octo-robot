@@ -17,10 +17,17 @@ public class Desenhador implements Serializable {
 	
 	private ArrayList<Figura> figuras;
 
+	/**
+	 * 
+	 */
 	public Desenhador() {
 		figuras = new ArrayList<Figura>();
 	}
 
+	/**
+	 * 
+	 * @param q
+	 */
 	public void guardar(Figura q) {
 		if (q == null) {
 			throw new IllegalArgumentException("A figura não pode ser null.");
@@ -28,6 +35,10 @@ public class Desenhador implements Serializable {
 		figuras.add(q);
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public String listar() {
 		String resultado = "";
 		for (int i = 0; i < figuras.size(); i++) {
@@ -47,6 +58,10 @@ public class Desenhador implements Serializable {
 		return figuras.get(pos);
 	}
 
+	/**
+	 * 
+	 * @param ler
+	 */
 	public void setFiguras(Desenhador ler) {
 		figuras = ler.figuras;
 	}

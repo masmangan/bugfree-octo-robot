@@ -51,6 +51,15 @@ public class DesenhadorApp {
 		System.out.println("**FIM**");
 	}
 
+	/**
+	 * 
+	 * @param desenho
+	 * @param comando
+	 * @param terminal
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	private static void processarComando(Desenhador desenho,
 			String comando, Scanner terminal) throws FileNotFoundException,
 			IOException, ClassNotFoundException {
@@ -76,10 +85,19 @@ public class DesenhadorApp {
 		}
 	}
 
+	/**
+	 * 
+	 * @param desenho
+	 */
 	private static void listar(Desenhador desenho) {
 		System.out.println(desenho.listar());
 	}
 
+	/**
+	 * 
+	 * @param desenho
+	 * @param palavras
+	 */
 	private static void consultarArea(Desenhador desenho, String[] palavras) {
 		int pos = Integer.parseInt(palavras[2]);
 		Figura f = desenho.getFiguraAt(pos);
@@ -88,6 +106,13 @@ public class DesenhadorApp {
 		}
 	}
 
+	/**
+	 * 
+	 * @return
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	private static Desenhador ler() throws FileNotFoundException, IOException,
 			ClassNotFoundException {
 		Desenhador desenho;
@@ -100,6 +125,12 @@ public class DesenhadorApp {
 		return desenho;
 	}
 
+	/**
+	 * 
+	 * @param desenho
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	private static void gravar(Desenhador desenho)
 			throws FileNotFoundException, IOException {
 		FileOutputStream fileStream = new FileOutputStream(
@@ -111,6 +142,11 @@ public class DesenhadorApp {
 		objectStream.close();
 	}
 
+	/**
+	 * 
+	 * @param desenho
+	 * @param terminal
+	 */
 	private static void criarCirculo(Desenhador desenho, Scanner terminal) {
 		System.out.print("\traio: ");
 		String entrada = terminal.nextLine();
@@ -120,6 +156,11 @@ public class DesenhadorApp {
 		System.out.println(c);
 	}
 
+	/**
+	 * 
+	 * @param desenho
+	 * @param terminal
+	 */
 	private static void criarQuadrado(Desenhador desenho, Scanner terminal) {
 		System.out.print("\tlado: ");
 		String entrada = terminal.nextLine();

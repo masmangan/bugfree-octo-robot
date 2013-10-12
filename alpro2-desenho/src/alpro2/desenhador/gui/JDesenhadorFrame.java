@@ -3,6 +3,7 @@ package alpro2.desenhador.gui;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -27,7 +28,7 @@ public class JDesenhadorFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private final Action sairAction = new SwingAction();
-	private final Action action = new SwingAction_2(this);
+	private final Action sobreAction = new SwingAction_2(this);
 
 	/**
 	 * Launch the application.
@@ -61,15 +62,14 @@ public class JDesenhadorFrame extends JFrame {
 		menuBar.add(mnNewMenu);
 
 		JMenuItem menuItem_1 = mnNewMenu.add(sairAction);
-		mnNewMenu.add(menuItem_1);
 
 		JMenu mnNewMenu_1 = new JMenu("Ajuda");
+		mnNewMenu_1.setMnemonic('j');
+
 		menuBar.add(mnNewMenu_1);
 
-		JMenuItem menuItem_2 = mnNewMenu_1.add(action);
-
-		JMenuItem menuItem = new JMenuItem("");
-		menuBar.add(menuItem);
+		JMenuItem menuItem_2 = mnNewMenu_1.add(sobreAction);
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -85,6 +85,7 @@ public class JDesenhadorFrame extends JFrame {
 		public SwingAction() {
 			putValue(NAME, "Sair");
 			putValue(SHORT_DESCRIPTION, "Encerra a aplicação");
+			putValue(MNEMONIC_KEY, KeyEvent.VK_S);
 		}
 
 		public void actionPerformed(ActionEvent e) {
@@ -104,6 +105,7 @@ public class JDesenhadorFrame extends JFrame {
 			this.frame = frame;
 			putValue(NAME, "Sobre...");
 			putValue(SHORT_DESCRIPTION, "Sobre o desenhador");
+			putValue(MNEMONIC_KEY, KeyEvent.VK_S);
 		}
 
 		public void actionPerformed(ActionEvent e) {
