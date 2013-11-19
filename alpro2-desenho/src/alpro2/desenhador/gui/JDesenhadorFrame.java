@@ -13,6 +13,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 import javax.swing.border.EmptyBorder;
 
 /**
@@ -56,8 +57,8 @@ public class JDesenhadorFrame extends JFrame {
 
 		setIconImage(Toolkit.getDefaultToolkit().getImage(
 				JDesenhadorFrame.class
-				.getResource("/alpro2/desenhador/gui/left.gif")));
-		
+						.getResource("/alpro2/desenhador/gui/left.gif")));
+
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 
@@ -90,6 +91,8 @@ public class JDesenhadorFrame extends JFrame {
 			putValue(NAME, "Sair");
 			putValue(SHORT_DESCRIPTION, "Encerra a aplicação");
 			putValue(MNEMONIC_KEY, KeyEvent.VK_S);
+			putValue(ACCELERATOR_KEY,
+					KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.CTRL_MASK));
 		}
 
 		public void actionPerformed(ActionEvent e) {
