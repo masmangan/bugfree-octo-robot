@@ -31,6 +31,8 @@ public class DesenhadorApp {
 	public static void main(String[] args) throws FileNotFoundException,
 			IOException, ClassNotFoundException {
 		System.out.println("Desenhador, (c) PUCRS/ALPRO II, 2013.");
+		System.out.println("\t(Digite \"consultar ajuda\" para lista de comandos.");
+		
 		Desenhador desenho = new Desenhador();
 		String comando = null;
 		Scanner terminal = new Scanner(System.in);
@@ -82,8 +84,11 @@ public class DesenhadorApp {
 		} else if (palavras[0].equals("consultar")) {
 			if (palavras[1].equals("área")) {
 				consultarArea(desenho, palavras);
+			} else if (palavras[1].equals("ajuda")) {
+				consultarAjuda();
 			}
 		}
+
 	}
 
 	/**
@@ -104,7 +109,7 @@ public class DesenhadorApp {
 		int pos = Integer.parseInt(palavras[2]);
 		Figura f = desenho.getFiguraAt(pos);
 		if (f != null) {
-			System.out.printf("%.3f", f.getArea());
+			System.out.printf("%.3f\n", f.getArea());
 		}
 	}
 
@@ -182,5 +187,15 @@ public class DesenhadorApp {
 		Quadrado q = new Quadrado(x, y, lado);
 		desenho.guardar(q);
 		System.out.println(q);
+	}
+
+	private static void consultarAjuda() {
+		System.out.println("Comandos disponíveis:");
+		System.out.println("\tcriar quadrado");
+		System.out.println("\tcriar círculo");
+		System.out.println("\tlistar");
+		System.out.println("\tgravar");
+		System.out.println("\tler");
+		System.out.println("\tconsultar área");
 	}
 }
