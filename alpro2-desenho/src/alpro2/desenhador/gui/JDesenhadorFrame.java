@@ -30,7 +30,11 @@ public class JDesenhadorFrame extends JFrame {
 	private JPanel contentPane;
 	private final Action sairAction = new SairSwingAction();
 	private final Action sobreAction = new SobreSwingAction(this);
+	private final Action quadradoAction = new CriarQuadradoSwingAction(this);
+	private final Action circuloAction = new CriarCirculoSwingAction(this);
 
+	
+	
 	/**
 	 * Launch the application.
 	 */
@@ -66,11 +70,14 @@ public class JDesenhadorFrame extends JFrame {
 		mnFile.setMnemonic('A');
 		menuBar.add(mnFile);
 
+		mnFile.add(sairAction);
+		
 		JMenu mnShapes = new JMenu("Figuras");
 		mnShapes.setMnemonic('F');
 		menuBar.add(mnShapes);
 
-		mnFile.add(sairAction);
+		mnShapes.add(quadradoAction);
+		mnShapes.add(circuloAction);
 
 		JMenu mnHelp = new JMenu("Ajuda");
 		mnHelp.setMnemonic('j');
@@ -126,4 +133,43 @@ public class JDesenhadorFrame extends JFrame {
 					JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
+	
+	
+	private class CriarQuadradoSwingAction extends AbstractAction {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		private JFrame frame;
+
+		public CriarQuadradoSwingAction(JFrame frame) {
+			this.frame = frame;
+			putValue(NAME, "Criar quadrado...");
+			putValue(SHORT_DESCRIPTION, "Criar quadrado");
+			putValue(MNEMONIC_KEY, KeyEvent.VK_Q);
+		}
+
+		public void actionPerformed(ActionEvent e) {
+			System.out.println("Criar quadrado");
+		}
+	}	
+	
+	private class CriarCirculoSwingAction extends AbstractAction {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		private JFrame frame;
+
+		public CriarCirculoSwingAction(JFrame frame) {
+			this.frame = frame;
+			putValue(NAME, "Criar círculo...");
+			putValue(SHORT_DESCRIPTION, "Criar círculo");
+			putValue(MNEMONIC_KEY, KeyEvent.VK_C);
+		}
+
+		public void actionPerformed(ActionEvent e) {
+			System.out.println("Criar quadrado");
+		}
+	}	
 }
