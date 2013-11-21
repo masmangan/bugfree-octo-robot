@@ -66,6 +66,10 @@ public class JDesenhadorFrame extends JFrame {
 		mnFile.setMnemonic('A');
 		menuBar.add(mnFile);
 
+		JMenu mnShapes = new JMenu("Figuras");
+		mnShapes.setMnemonic('F');
+		menuBar.add(mnShapes);
+
 		mnFile.add(sairAction);
 
 		JMenu mnHelp = new JMenu("Ajuda");
