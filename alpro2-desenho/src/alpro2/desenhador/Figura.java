@@ -3,9 +3,28 @@ package alpro2.desenhador;
 /**
  * 
  * @author marco.mangan@pucrs.br
- *
+ * 
  */
-public interface Figura {
+public abstract class Figura {
+
+	private int x;
+	private int y;
+
+	public Figura(int x, int y) {
+		super();
+		this.x = x;
+		this.y = y;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return String.format("Figura [x=%s, y=%s]", x, y);
+	}
 
 	/**
 	 * 

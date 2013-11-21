@@ -91,8 +91,8 @@ public class JDesenhadorFrame extends JFrame {
 			putValue(NAME, "Sair");
 			putValue(SHORT_DESCRIPTION, "Encerra a aplicação");
 			putValue(MNEMONIC_KEY, KeyEvent.VK_S);
-			putValue(ACCELERATOR_KEY,
-					KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.CTRL_MASK));
+			putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_X,
+					ActionEvent.CTRL_MASK));
 		}
 
 		public void actionPerformed(ActionEvent e) {

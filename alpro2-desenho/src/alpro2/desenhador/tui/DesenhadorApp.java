@@ -15,6 +15,7 @@ import alpro2.desenhador.Figura;
 import alpro2.desenhador.Quadrado;
 
 /**
+ * A classe <code>DesenhadoApp</code> permite criar figuras na linha de comando.
  * 
  * @author marco.mangan@pucrs.br
  * 
@@ -31,7 +32,7 @@ public class DesenhadorApp {
 			IOException, ClassNotFoundException {
 		System.out.println("Desenhador, (c) PUCRS/ALPRO II, 2013.");
 		Desenhador desenho = new Desenhador();
-		String comando =  null;
+		String comando = null;
 		Scanner terminal = new Scanner(System.in);
 		do {
 			try {
@@ -43,7 +44,7 @@ public class DesenhadorApp {
 				System.out
 						.println("Verifique se o valor informado é um inteiro.");
 			} catch (Exception e) {
-				System.out.println("Ops, ocorreu um erro...");
+				System.out.println("Eita! Ocorreu um erro inesperado...");
 				System.out.println(e.getMessage());
 			}
 
@@ -60,9 +61,9 @@ public class DesenhadorApp {
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 */
-	private static void processarComando(Desenhador desenho,
-			String comando, Scanner terminal) throws FileNotFoundException,
-			IOException, ClassNotFoundException {
+	private static void processarComando(Desenhador desenho, String comando,
+			Scanner terminal) throws FileNotFoundException, IOException,
+			ClassNotFoundException {
 		System.out.printf("[%s]\n", comando);
 		String[] palavras = comando.split(" ");
 		System.out.println(Arrays.toString(palavras));
@@ -94,6 +95,7 @@ public class DesenhadorApp {
 	}
 
 	/**
+	 * Consulta a área de uma figura.
 	 * 
 	 * @param desenho
 	 * @param palavras
@@ -107,6 +109,7 @@ public class DesenhadorApp {
 	}
 
 	/**
+	 * Lê de um arquivo binário para uma lista de figuras.
 	 * 
 	 * @return
 	 * @throws FileNotFoundException
@@ -116,16 +119,15 @@ public class DesenhadorApp {
 	private static Desenhador ler() throws FileNotFoundException, IOException,
 			ClassNotFoundException {
 		Desenhador desenho;
-		FileInputStream fileStream = new FileInputStream(
-				"desenhador.dat");
-		ObjectInputStream objectStream = new ObjectInputStream(
-				fileStream);
+		FileInputStream fileStream = new FileInputStream("desenhador.dat");
+		ObjectInputStream objectStream = new ObjectInputStream(fileStream);
 		desenho = (Desenhador) objectStream.readObject();
 		objectStream.close();
 		return desenho;
 	}
 
 	/**
+	 * Grava a lista de figuras em arquivo binário.
 	 * 
 	 * @param desenho
 	 * @throws FileNotFoundException
@@ -133,39 +135,51 @@ public class DesenhadorApp {
 	 */
 	private static void gravar(Desenhador desenho)
 			throws FileNotFoundException, IOException {
-		FileOutputStream fileStream = new FileOutputStream(
-				"desenhador.dat");
-		ObjectOutputStream objectStream = new ObjectOutputStream(
-				fileStream);
+		FileOutputStream fileStream = new FileOutputStream("desenhador.dat");
+		ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
 		objectStream.writeObject(desenho);
 		objectStream.flush();
 		objectStream.close();
 	}
 
 	/**
+	 * Solicita dados para a criação de um círculo
 	 * 
 	 * @param desenho
 	 * @param terminal
 	 */
 	private static void criarCirculo(Desenhador desenho, Scanner terminal) {
-		System.out.print("\traio: ");
+		System.out.print("\tx: ");
 		String entrada = terminal.nextLine();
+		int x = Integer.parseInt(entrada);
+		System.out.print("\ty: ");
+		entrada = terminal.nextLine();
+		int y = Integer.parseInt(entrada);
+		System.out.print("\traio: ");
+		entrada = terminal.nextLine();
 		int raio = Integer.parseInt(entrada);
-		Circulo c = new Circulo(raio);
+		Circulo c = new Circulo(x, y, raio);
 		desenho.guardar(c);
 		System.out.println(c);
 	}
 
 	/**
+	 * Solicita dados para a criação de um quadrado.
 	 * 
 	 * @param desenho
 	 * @param terminal
 	 */
 	private static void criarQuadrado(Desenhador desenho, Scanner terminal) {
-		System.out.print("\tlado: ");
+		System.out.print("\tx: ");
 		String entrada = terminal.nextLine();
+		int x = Integer.parseInt(entrada);
+		System.out.print("\ty: ");
+		entrada = terminal.nextLine();
+		int y = Integer.parseInt(entrada);
+		System.out.print("\tlado: ");
+		entrada = terminal.nextLine();
 		int lado = Integer.parseInt(entrada);
-		Quadrado q = new Quadrado(lado);
+		Quadrado q = new Quadrado(x, y, lado);
 		desenho.guardar(q);
 		System.out.println(q);
 	}

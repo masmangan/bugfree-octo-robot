@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * 
  * @author marco.mangan@pucrs.br
- *
+ * 
  */
 public class Desenhador implements Serializable {
 
@@ -14,7 +14,7 @@ public class Desenhador implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private ArrayList<Figura> figuras;
 
 	/**
@@ -49,8 +49,9 @@ public class Desenhador implements Serializable {
 
 	/**
 	 * 
-	 * Causa ArrayIndexOutOfBoundsException caso <code> pos </code> seja um valor
-	 * de índice inválido.
+	 * Causa ArrayIndexOutOfBoundsException caso <code> pos </code> seja um
+	 * valor de índice inválido.
+	 * 
 	 * @param pos
 	 * @return
 	 */
