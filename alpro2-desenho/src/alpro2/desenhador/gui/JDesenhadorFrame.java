@@ -16,6 +16,10 @@ import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 import javax.swing.border.EmptyBorder;
 
+import alpro2.desenhador.Circulo;
+import alpro2.desenhador.Desenhador;
+import alpro2.desenhador.Quadrado;
+
 /**
  * 
  * @author marco.mangan@pucrs.br
@@ -32,9 +36,8 @@ public class JDesenhadorFrame extends JFrame {
 	private final Action sobreAction = new SobreSwingAction(this);
 	private final Action quadradoAction = new CriarQuadradoSwingAction(this);
 	private final Action circuloAction = new CriarCirculoSwingAction(this);
+	private Desenhador desenho = new Desenhador();
 
-	
-	
 	/**
 	 * Launch the application.
 	 */
@@ -71,7 +74,7 @@ public class JDesenhadorFrame extends JFrame {
 		menuBar.add(mnFile);
 
 		mnFile.add(sairAction);
-		
+
 		JMenu mnShapes = new JMenu("Figuras");
 		mnShapes.setMnemonic('F');
 		menuBar.add(mnShapes);
@@ -133,8 +136,7 @@ public class JDesenhadorFrame extends JFrame {
 					JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
-	
-	
+
 	private class CriarQuadradoSwingAction extends AbstractAction {
 		/**
 		 * 
@@ -150,10 +152,13 @@ public class JDesenhadorFrame extends JFrame {
 		}
 
 		public void actionPerformed(ActionEvent e) {
+			// TODO: ler dados
+			Quadrado q = new Quadrado(1, 2, 3);
+			desenho.guardar(q);
 			System.out.println("Criar quadrado");
 		}
-	}	
-	
+	}
+
 	private class CriarCirculoSwingAction extends AbstractAction {
 		/**
 		 * 
@@ -169,7 +174,10 @@ public class JDesenhadorFrame extends JFrame {
 		}
 
 		public void actionPerformed(ActionEvent e) {
+			// TODO: ler dados
+			Circulo c = new Circulo(1, 2, 3);
+			desenho.guardar(c);
 			System.out.println("Criar quadrado");
 		}
-	}	
+	}
 }
